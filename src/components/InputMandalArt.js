@@ -11,16 +11,12 @@ class InputMandalArt extends Component {
 
     state = {
         title: '',
-        content: ''
+        content: '',
+        mandalId: ''
     }
 
     componentWillMount() {
-        fetch('http://pioneer-agghe.run.goorm.io/mandalart/0/0?mandalId=0')
-            .then(res => res.json())
-            // .then(data => console.log("data", data));
-            .then(data => this.setState({
-                //  data.item
-            }))
+        console.log(window.location.href)
     }
 
     handleChange = (e) => {
@@ -36,6 +32,7 @@ class InputMandalArt extends Component {
             title: '',
             content: ''
         })
+        fetch()
     }
     render() {
         return (

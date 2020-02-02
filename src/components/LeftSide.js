@@ -88,8 +88,17 @@ class LeftSide extends React.Component {
         item99: ''
     }
 
-    componentWillMount() {
-        fetch('https://pioneer-agghe.run.goorm.io/mandalart/0/1')
+    handleClick = (e) => {
+        console.log(e.target.dataset.mainitem)
+        this.setState({
+            mainitem: e.target.dataset.mainitem,
+            subitem: e.target.dataset.subitem
+        })
+        this.props.selectedPositions(e.target.dataset)
+    }
+
+    componentDidMount() {
+        const fetchData = fetch('https://pioneer-agghe.run.goorm.io/mandalart/0/1')
             .then(res => res.json())
             .then(data => {
                 data.items.map(x => {
@@ -101,22 +110,13 @@ class LeftSide extends React.Component {
                     })
                 })
             })
-            // .then(data => this.setState({
-            //     item11: data.
-            // }) )
+
+        return fetchData
     }
 
-    handleClick = (e) => {
-        // console.log(e.target.dataset.mainitem)
-        this.setState({
-            mainitem: e.target.dataset.mainitem,
-            subitem: e.target.dataset.subitem
-        })
-        this.props.selectedPositions(e.target.dataset)
-    }
+    
 
     render() {
-
         return (
             <div className="column is-two-thirds">
                 <ul id="MandalArt">
